@@ -8,7 +8,7 @@ function db()
 {
 	
 	$user = "statement_reader";
-	$pass = "HSJ.1234.hsm";
+	$pass = "password";
 	$db = "statement_reader_database";
 
 	return new PDO("mysql:host=localhost;dbname=".$db,$user,$pass);
