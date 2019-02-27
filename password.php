@@ -1,4 +1,4 @@
-<html>
+<html2>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="lib/css/font-awesome.min.css"/>
