@@ -11,7 +11,23 @@
 	
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
+		<script> 
+        $(document).ready(function(){
+          $("#search_box").click(function(){
+              $("#search_input").animate({
+					width:'317px'
+                  });
+            $("#search_box").animate({
+             // left: '250px',
+              opacity: '0.5',
+              //height: '100px',
+              width: '388px'
+            },{complete:  function() { $("#search_button").fadeIn(); }})
+          });
+        });
+        </script> 
 	</head>
 	<body>
 	
@@ -36,19 +52,31 @@
     	  <div style="display:table-cell; text-align:left;vertical-align:top; padding:15px">
     	  
     		<div style="display:table;font-family:Helvetica,sans-serif;color:#888888">
-    			<div style="display: table-cell;">
-    				<span class="far fa-plus-square fa-2x"></span>
+    			<div style="display: table-cell;vertical-align:middle;">
+    				<i class="far fa-plus-square fa-2x"></i>
     			</div>
     			
     			<div style="display: table-cell; padding-left:10px;vertical-align:middle;font-size:14px">
     				ADD A DOCUMENT
     			</div>
+    			<div style="display: table-cell;padding-left:10px;">
+    			<div style="width:388px;">
+    				<div id="search_box" style="position:absolute;float:left;border:1px solid #BBBBBB;border-radius:20px; width:200px;height:35px;">
+    					<input id="search_input" style="border:none;outline:none;margin:5px 0px 0px 15px;width:165px;height:25px;" placeholder="Find a Document by Name"/>
+    				</div>
+    				<div id="search_button" style="display:none;float:right;text-align:center;margin-top:2px;border-radius:50%;background-color:#4CAF50;width:33px;height:33px">
+    					<i style="color:#FFFFFF; margin-top:10px;" class="fas fa-search"></i>
+    				</div>
+    			</div>
     		</div>
+    		 	    
+    		</div>
+    		<div style="width:100%;height:1px; background-color:#DDDDDD; margin-top:10px;"></div>
     	    
         	    <div style="display:table;border-spacing:0 15px;text-align:left;width:100%;border-radius:10px;margin-bottom:10px;font-family:Helvetica,sans-serif;font-size:16px;color:#888888">
 					<div style="display:table-row;">
-    					<div style="display:table-cell;text-align:center;font-size:12px;width:100px;vertical-align:middle">
-        	    			UPLOADED
+    					<div style="display:table-cell;text-align:center;font-size:12px;width:50px;vertical-align:middle">
+        	    			<i class="fas fa-file-upload fa-2x"></i>	
         	    		</div>
         	    		<div style="display:table-cell;text-align:left;font-size:12px;vertical-align:middle">
         	    			DATE
@@ -59,7 +87,7 @@
         	    		<div style="display:table-cell;text-align:center;width:10px;font-size:12px;vertical-align:middle">
         	    			DELETE
         	    		</div>
-        	    		<div style="display:table-cell;text-align:center;width:100px;font-size:12px;vertical-align:middle">
+        	    		<div style="display:table-cell;text-align:center;width:70px;font-size:12px;vertical-align:middle">
         	    			TYPE
         	    		</div>
         	    		<div style="display:table-cell;text-align:center;width:50px;font-size:12px;vertical-align:middle">
@@ -85,11 +113,11 @@
     	    		6 PM
     	    	</div>
     	    	<div style="display:table-cell;text-align:center;vertical-align:middle;border: 1px dashed #CCCCCC;border-right-style: none;border-left-style: none;">
-    	    		<span class="far fa-trash-alt" style="color:#C60000"></span>
+    	    		<i class="far fa-trash-alt" style="color:#C60000"></i>
     	    	</div>
     	    	<div style="display:table-cell;text-align:center;border: 1px dashed #CCCCCC;vertical-align:middle;border-right-style: none;border-left-style: none;">
     	    	
-    	    			<span class="far fa-file-alt"></span>
+    	    			<i class="far fa-file-alt"></i>
     	    			<span style="font-size: 14px">PDF</span>
     	    		
     	    	</div>
