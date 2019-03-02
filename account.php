@@ -1,6 +1,6 @@
 <?php 
 
-    $document_names = array("Scotiabank Balance Sheet", "CIBC Statement of Account", "RBC Monthly Statement", "Accounts Payable", "Statement of Cash Flow");
+    $document_names = array("ACME Invoice", "Statement of Account", "Monthly Credit Card Statement", "Accounts Payable", "Statement of Cash Flow");
     
 ?>
 <html>
@@ -11,128 +11,157 @@
 	
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<!-- JQuery for special effects -->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 		
 		<script> 
+		// Animate the search box when clicking on it
         $(document).ready(function(){
-          $("#search_box").click(function(){
+          $(".search_box").click(function(){
+              // Bring the search box and associated input
+              // to a larger width so that we can enter
+              // document information
               $("#search_input").animate({
 					width:'317px'
                   });
-            $("#search_box").animate({
-             // left: '250px',
-              opacity: '0.5',
-              //height: '100px',
+            $(".search_box").animate({
               width: '388px'
             },{complete:  function() { $("#search_button").fadeIn(); }})
           });
         });
+
+       
         </script> 
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 	</head>
 	<body>
 	
-	<!-- Navigation Bar at the top -->
-	<ul>
-      <li style="width:200px"><a class="active" href="account.php">StatementReader</a></li>
-<!--       <li><a href="#about">About</a></li> -->
-    </ul>
+
+	<!-- Header -->
+	<div class="header">
+		<div style="display: table">
+			<img src="img/logo.png" style="display:table-cell;margin-right:15px;"/>	
+			<span style="display: table-cell; vertical-align:middle;">StatementReader</span>
+		</div>
+	</div>
     
+    <!-- Main container which is actually a table made of two major columns. 
+         The first column holds information for the currently logged in user.
+         The second column contains the list of documents along with a way to
+         add and search for a document -->
+    <div class="main">
     
-    <div style="display:table;width:100%;height:100%;vertical-align:top">
-    	<div style="display:table-cell;width:20px;">
-    	    <div style="text-align:center;float:left;border-right:1px solid #DDDDDD;width:200px;padding-top:30px;height:100%; ">
-		
-    			<img src="avatar.png" style="border-radius:50%;width:70px;height:70px;"/>
-    			
-    			<span style="display:block;font-family:Helvetica, sans-serif;margin-top:15px;">Mark L.</span>
-    			<span style="background-color:#4CAF50; display:block; width:60px;margin:30px 57px;border-radius:10px; padding:10px;color:#FFFFFF;font-family:Helvetica, sans-serif;">Log out</span>
-			</div>
+    	<!-- The first column contains a user picture along with their name and a log out button -->
+    	<div class="col content-col-1">	  
+        		<img src="avatar.png" id="avatar"/>
+        			
+    			<span id="username">Mark L.</span>
+    			<span class="logout">Log out</span>
+    		
+		</div>
+		<!-- End of the first column -->
+    	 
+    	  <!--  Beginning of second column -->
+    	  <div class="col content-col-2">
+    	  
+    	  <!-- Use the toolbar to add a document or search for one -->
+    	  	<div class="toolbar">
+    	  		<div class="col">
+    	  			<i class="far fa-plus-square fa-2x"></i>
+    	  		</div>
+    	  		<div class="col" style="vertical-align:middle;padding:0px 10px 0px 10px">
+    	  			ADD A DOCUMENT
+    	  		</div>
+    	  		<!-- The search box expands with an animation to the right
+    	  		     and the search button to be clicked appears afterwards. -->
+    	  		<div class="col">
+    	  			<div style="width:388px;height:40px; ">
+        				<div class="search_box">
+        					<input id="search_input" placeholder="Find a Document"/>
+        				</div>
+        				<div id="search_button">
+        					<i style="color:#FFFFFF; margin-top:10px;" class="fas fa-search"></i>
+        				</div>
+    			</div>
+    	  	</div>
     	  </div>
+    	  <!-- End of toolbar -->
     	  
-    	  <div style="display:table-cell; text-align:left;vertical-align:top; padding:15px">
-    	  
-    		<div style="display:table;font-family:Helvetica,sans-serif;color:#888888">
-    			<div style="display: table-cell;vertical-align:middle;">
-    				<i class="far fa-plus-square fa-2x"></i>
-    			</div>
-    			
-    			<div style="display: table-cell; padding-left:10px;vertical-align:middle;font-size:14px">
-    				ADD A DOCUMENT
-    			</div>
-    			<div style="display: table-cell;padding-left:10px;">
-    			<div style="width:388px;">
-    				<div id="search_box" style="position:absolute;float:left;border:1px solid #BBBBBB;border-radius:20px; width:200px;height:35px;">
-    					<input id="search_input" style="border:none;outline:none;margin:5px 0px 0px 15px;width:165px;height:25px;" placeholder="Find a Document by Name"/>
-    				</div>
-    				<div id="search_button" style="display:none;float:right;text-align:center;margin-top:2px;border-radius:50%;background-color:#4CAF50;width:33px;height:33px">
-    					<i style="color:#FFFFFF; margin-top:10px;" class="fas fa-search"></i>
-    				</div>
-    			</div>
-    		</div>
-    		 	    
-    		</div>
-    		<div style="width:100%;height:1px; background-color:#DDDDDD; margin-top:10px;"></div>
+    	  <!-- Separator for a clean look -->
+    	   <div style="height:1px; background-color:#DDDDDD; margin-top:5px;"></div>
+    	   
+    	   <!-- Set the table headings -->
     	    
-        	    <div style="display:table;border-spacing:0 15px;text-align:left;width:100%;border-radius:10px;margin-bottom:10px;font-family:Helvetica,sans-serif;font-size:16px;color:#888888">
+        	    <div class="data-table">
 					<div style="display:table-row;">
-    					<div style="display:table-cell;text-align:center;font-size:12px;width:50px;vertical-align:middle">
+    					<div class="col-heading">
         	    			<i class="fas fa-file-upload fa-2x"></i>	
         	    		</div>
-        	    		<div style="display:table-cell;text-align:left;font-size:12px;vertical-align:middle">
-        	    			DATE
+        	    		<div class="col-heading">
+        	    			DATE ADDED
         	    		</div>
-        	    		<div style="display:table-cell;text-align:center;width:70px;font-size:12px;vertical-align:middle">
+        	    		<div class="col-heading">
         	    			TIME
         	    		</div>
-        	    		<div style="display:table-cell;text-align:center;width:10px;font-size:12px;vertical-align:middle">
+        	    		<div class="col-heading">
         	    			DELETE
         	    		</div>
-        	    		<div style="display:table-cell;text-align:center;width:70px;font-size:12px;vertical-align:middle">
+        	    		<div class="col-heading">
         	    			TYPE
         	    		</div>
-        	    		<div style="display:table-cell;text-align:center;width:50px;font-size:12px;vertical-align:middle">
-        	    			GET EXCEL
+        	    		<div class="col-heading">
+        	    			GET PARSED
         	    		</div>
-        	    		<div style="display:table-cell;text-align:left;padding:10px;font-size:12px;vertical-align:middle">
+        	    		<div class="col-heading-end">
         	    			DOCUMENT NAME
         	    		</div>
 					</div>
+					
+					
     	  <?php
     	
             	foreach($document_names as $item)
             	{
     	    ?>
     	    <div style="display: table-row">
-    	    	<div style="display:table-cell;text-align:center;vertical-align:middle;border: 1px dashed #CCCCCC;  border-right-style: none;padding:10px;border-radius:10px 0px 0px 10px">
+    	    	<div class="col-data-start">
     	    		1d
     	    	</div>
-    	    	<div style="display:table-cell;vertical-align:middle;width:180px;border: 1px dashed #CCCCCC;border-right-style: none;border-left-style: none;">
-    	    		January 30, 2019
+    	    	<div class="col-data">
+    	    	
+    	    			<span style="display:block;font-size: 12px">JAN</span> 30
+    	    		
     	    	</div>
-    	    	<div style="display:table-cell;vertical-align:middle;text-align:center;border: 1px dashed #CCCCCC;border-right-style: none;border-left-style: none;">
-    	    		6 PM
+    	    	<div class="col-data">
+    	    		<span style="display:block;font-size: 15px">4:20</span> PM
     	    	</div>
-    	    	<div style="display:table-cell;text-align:center;vertical-align:middle;border: 1px dashed #CCCCCC;border-right-style: none;border-left-style: none;">
+    	    	<div class="col-data">
     	    		<i class="far fa-trash-alt" style="color:#C60000"></i>
     	    	</div>
-    	    	<div style="display:table-cell;text-align:center;border: 1px dashed #CCCCCC;vertical-align:middle;border-right-style: none;border-left-style: none;">
-    	    	
+    	    	<div class="col-data">
     	    			<i class="far fa-file-alt"></i>
     	    			<span style="font-size: 14px">PDF</span>
     	    		
     	    	</div>
-    	    	<div style="display:table-cell;text-align:center;border: 1px dashed #CCCCCC;vertical-align:middle;border-right-style: none;border-left-style: none;">
+    	    	<div class="col-data">
     	    		<i class="fas fa-download"></i>
     	    	</div>
-    	    	<div style="display:table-cell;padding-left:10px;vertical-align:middle;text-align:left;border: 1px dashed #CCCCCC;border-left-style: none;border-radius:0px 10px 10px 0px">
+    	    	<div class="col-data-end">
     	    		<?php echo $item;?>
     	    	</div>
     	    </div>
     	<?php }?>
-   </div>
-    	  </div>
+    	</div>
+    	<!-- End of the second column -->
     </div>
+    	  
+   </div>
+  </div>
+ </div>
    
-  
-	</body>
+   	</body>
 </html>
