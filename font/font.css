@@ -1,0 +1,22 @@
+@font-face
+{
+    font-family: "Kenyan";
+    src: url("kenyancoffee.ttf");
+}
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-item
+{
+    padding-right: 10px;
+}
+
+.logo
+{
+    font-family: Kenyan;
+    font-size: 25px;
+    color:#92abd2;
+}
