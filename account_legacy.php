@@ -3,19 +3,20 @@
 	// account.php
 
 	session_start();
+	echo "hi";
 	
-	if(empty($_SESSION['user_email']))
-		header("Location: index.php");
+	/* if(empty($_SESSION['user_email']))
+		header("Location: index.php"); */
 
 ?>
 <html>
 	<head>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="lib/css/font-awesome.min.css"/>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 		<script src="lib/js/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-		<script src="lib/js/angular.min.js"></script>
+		<script src="lib/js/angular.min.js"></script> -->
 		<style>
 			body
 			{
@@ -161,7 +162,7 @@
 	  </div>
 	</div>
 		<script>
-			var items = [];
+			/* var items = [];
 			var app = angular.module('statement_reader', []);
 
 			app.controller('statement_controller', function($scope, $http) 
@@ -342,7 +343,7 @@
 					$('#select_bank').hide();
 					$('#label_parsing_progress').show();
 			    }
-
+ */
 			   
 		</script>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position:fixed;width:100%;z-index:1">

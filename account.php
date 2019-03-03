@@ -5,6 +5,10 @@
 ?>
 <html>
 	<head>
+    	
+    <!-- Fonts -->
+    <link rel="stylesheet/less" type="text/css" href="font/font.css" />
+    	
 	<!-- Less -->
 	<link rel="stylesheet/less" type="text/css" href="styles.less" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
@@ -37,15 +41,17 @@
        
         </script> 
         <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        
 	</head>
 	<body>
 	
 
 	<!-- Header -->
 	<div class="header">
-		<div style="display: table">
-			<img src="img/logo.png" style="display:table-cell;margin-right:15px;"/>	
-			<span style="display: table-cell; vertical-align:middle;">StatementReader</span>
+		<div class="grid-container">
+		
+			<div class="grid-item"><img src="img/logo.png"/></div>
+			<div class="grid-item"><span class="logo" style="letter-spacing:1px;">StatementReader</span></div>
 		</div>
 	</div>
     
